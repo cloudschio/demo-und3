@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f7f2ec;
+      --cream: #fffaf4;
+      --brown: #2c1b14;
+      --brown-2: #4e3529;
+      --maroon: #5c0612;
+      --gold: #d4af37;
+      --gold-soft: rgba(212,175,55,.18);
+      --shadow: 0 18px 40px rgba(0,0,0,.12);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--bg);
+      color:#2c2c2c;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .section{
+      position:relative;
+      padding:90px 20px;
+      isolation:isolate;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.7)),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+      position:relative;
+    }
+
+    .hero-card{
+      max-width:860px;
+      padding:34px 22px;
+    }
+
+    .eyebrow{
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:.78rem;
+      color:#f5e7b5;
+      margin-bottom:14px;
+    }
+
+    .title{
+      font-family:'Cinzel Decorative',serif;
+      font-size:clamp(2.4rem, 6vw, 5rem);
+      color:var(--gold);
+      text-shadow:0 2px 10px rgba(0,0,0,.45);
+      line-height:1.05;
+    }
+
+    .subtitle{
+      max-width:700px;
+      margin:18px auto 0;
+      line-height:1.8;
+      font-weight:300;
+      font-size:1rem;
+      color:#f6f0e8;
+    }
+
+    .date-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top:26px;
+      padding:10px 18px;
+      border:1px solid rgba(212,175,55,.45);
+      border-radius:999px;
+      background:rgba(0,0,0,.18);
+      backdrop-filter:blur(6px);
+      color:#fff;
+      font-weight:600;
+    }
+
+    .nav{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      z-index:999;
+      display:flex;
+      gap:16px;
+      padding:12px 16px;
+      background:rgba(44,27,20,.92);
+      border:1px solid rgba(212,175,55,.6);
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .nav a{
+      width:38px;height:38px;
+      display:grid;place-items:center;
+      color:#fff;
+      border-radius:50%;
+      transition:.25s ease;
+    }
+
+    .nav a:hover{
+      background:var(--gold);
+      color:var(--brown);
+    }
+
+    .music-btn{
+      position:fixed;
+      top:18px;
+      right:18px;
+      z-index:1000;
+      width:46px;height:46px;
+      border:none;
+      border-radius:50%;
+      background:var(--gold);
+      color:var(--brown);
+      box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+
+    .section-soft{
+      background:linear-gradient(180deg, rgba(255,250,244,.98), rgba(244,233,221,.98));
+    }
+
+    .section-dark{
+      color:#fff;
+      background:
+        linear-gradient(rgba(44,27,20,.86), rgba(44,27,20,.90)),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+    }
+
+    .soft-brown{
+      color:#fff;
+      background:linear-gradient(180deg, rgba(84,57,43,.95), rgba(56,35,25,.97));
+    }
+
+    .heading{
+      text-align:center;
+      margin-bottom:26px;
+      font-family:'Cinzel Decorative',serif;
+      font-size:clamp(1.8rem, 4vw, 3rem);
+      color:var(--gold);
+    }
+
+    .web-line{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin:14px 0 18px;
+    }
+
+    .web-line::before,
+    .web-line::after{
+      content:"";
+      width:72px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(212,175,55,.9), transparent);
+    }
+
+    .webding{
+      font-family:Webdings,sans-serif;
+      color:var(--gold);
+      font-size:1.1rem;
+      line-height:1;
+      opacity:.9;
+    }
+
+    .lead{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto;
+      line-height:1.9;
+      font-size:1rem;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:28px;
+      margin-top:36px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid rgba(212,175,55,.7);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      font-family:'Great Vibes',cursive;
+      font-size:2.4rem;
+      color:var(--maroon);
+      margin-bottom:8px;
+    }
+
+    .avatar{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid var(--gold);
+      margin:0 auto 18px;
+    }
+
+    .meta{
+      margin-top:10px;
+      color:#666;
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
+      margin:34px auto 0;
+      max-width:720px;
+    }
+
+    .time-box{
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(212,175,55,.55);
+      border-radius:18px;
+      padding:18px 12px;
+      text-align:center;
+      backdrop-filter:blur(6px);
+    }
+
+    .time-box strong{
+      display:block;
+      font-size:2rem;
+      color:var(--gold);
+      margin-bottom:4px;
+    }
+
+    .timeline{
+      position:relative;
+      max-width:900px;
+      margin:40px auto 0;
+      padding-left:14px;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:var(--gold);
+      transform:translateX(-50%);
+    }
+
+    .tl-item{
+      width:50%;
+      padding:0 34px 30px 0;
+      position:relative;
+    }
+
+    .tl-item:nth-child(even){
+      margin-left:50%;
+      padding:0 0 30px 34px;
+    }
+
+    .tl-dot{
+      position:absolute;
+      top:6px;
+      right:-10px;
+      width:18px;height:18px;
+      border-radius:50%;
+      background:var(--cream);
+      border:4px solid var(--gold);
+    }
+
+    .tl-item:nth-child(even) .tl-dot{
+      left:-10px;
+      right:auto;
+    }
+
+    .tl-card{
+      background:#fff;
+      color:#2c2c2c;
+      border-left:5px solid var(--maroon);
+      border-radius:16px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .rsvp{
+      max-width:680px;
+      margin:0 auto;
+      background:#fff;
+      color:#2c2c2c;
+      border-radius:22px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(212,175,55,.65);
+    }
+
+    .field{
+      margin-bottom:16px;
+      text-align:left;
+    }
+
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #d8d8d8;
+      border-radius:12px;
+      font:inherit;
+      outline:none;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border:none;
+      border-radius:999px;
+      background:var(--gold);
+      color:var(--brown);
+      font-weight:700;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      background:#c69f2d;
+    }
+
+    .footer{
+      text-align:center;
+      padding:34px 20px 60px;
+      color:#fff;
+      background:#251510;
+      border-top:3px solid var(--gold);
+    }
+
+    .divider-space{height:10px}
+
+    @media (max-width: 900px){
+      .card-grid{grid-template-columns:1fr}
+      .countdown{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .timeline::before{left:18px; transform:none}
+      .tl-item,
+      .tl-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding:0 0 24px 44px;
+      }
+      .tl-dot,
+      .tl-item:nth-child(even) .tl-dot{
+        left:9px; right:auto;
+      }
+    }
+
+    @media (max-width: 520px){
+      .nav{gap:8px;padding:10px 12px}
+      .nav a{width:34px;height:34px}
+      .countdown{grid-template-columns:1fr 1fr}
+      .hero-card{padding-inline:10px}
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="assets/kebo-giro.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-btn" id="musicBtn" aria-label="Putar musik">
+    <i class="fa-solid fa-play" id="musicIcon"></i>
+  </button>
+
+  <nav class="nav" aria-label="Navigasi cepat">
+    <a href="#home"><i class="fa-solid fa-house"></i></a>
+    <a href="#mempelai"><i class="fa-solid fa-heart"></i></a>
+    <a href="#acara"><i class="fa-solid fa-calendar-days"></i></a>
+    <a href="#cerita"><i class="fa-solid fa-book-open"></i></a>
+    <a href="#rsvp"><i class="fa-solid fa-envelope"></i></a>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-card" data-aos="fade-up">
+      <div class="eyebrow">Undangan Pernikahan</div>
+      <h1 class="title">Rama & Shinta</h1>
+      <p class="subtitle">
+        Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu di hari bahagia kami.
+      </p>
+      <div class="date-pill"><i class="fa-regular fa-calendar"></i> 25 Oktober 2026</div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap" data-aos="fade-up">
+      <div class="web-line"><span class="webding">n</span><span class="webding">n</span></div>
+      <p class="lead">
+        Semoga kebahagiaan ini menjadi awal dari perjalanan yang penuh berkah, cinta, dan keharmonisan.
+      </p>
+      <div class="web-line"><span class="webding">n</span><span class="webding">n</span></div>
+    </div>
+  </section>
+
+  <section id="mempelai" class="section section-dark">
+    <div class="wrap">
+      <h2 class="heading"><span class="webding">n</span> Mempelai <span class="webding">n</span></h2>
+      <p class="lead">Dengan rahmat Allah SWT, kami dipersatukan dalam ikatan suci pernikahan.</p>
+
+      <div class="card-grid">
+        <div class="card" data-aos="fade-right">
+          <img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Mempelai pria">
+          <h3>Rama</h3>
+          <p style="font-weight:600">Raden Rama Wijaya</p>
+          <p class="meta">Putra pertama dari Bpk. Heru Wijaya &amp; Ibu Retno Susilowati</p>
+        </div>
+
+        <div class="card" data-aos="fade-left">
+          <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Mempelai wanita">
+          <h3>Shinta</h3>
+          <p style="font-weight:600">Dewi Shinta Larasati</p>
+          <p class="meta">Putri kedua dari Bpk. Bambang Purnomo &amp; Ibu Sri Rahayu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="acara" class="section section-soft">
+    <div class="wrap">
+      <h2 class="heading"><span class="webding">n</span> Waktu & Tempat <span class="webding">n</span></h2>
+      <p class="lead">Kami berharap kehadiran Anda untuk menyempurnakan kebahagiaan kami.</p>
+
+      <div class="countdown" aria-label="Hitung mundur acara">
+        <div class="time-box"><strong id="days">00</strong>Hari</div>
+        <div class="time-box"><strong id="hours">00</strong>Jam</div>
+        <div class="time-box"><strong id="minutes">00</strong>Menit</div>
+        <div class="time-box"><strong id="seconds">00</strong>Detik</div>
+      </div>
+
+      <div class="card-grid" style="margin-top:34px">
+        <div class="card" data-aos="fade-up">
+          <h3 style="margin-bottom:10px">Akad Nikah</h3>
+          <p><i class="fa-regular fa-calendar"></i> Minggu, 25 Oktober 2026</p>
+          <p><i class="fa-regular fa-clock"></i> 08.00 - 10.00 WIB</p>
+          <p class="meta">Kraton Yogyakarta, Jl. Rotowijayan Blok No. 1, Panembahan, Kota Yogyakarta.</p>
+        </div>
+
+        <div class="card" data-aos="fade-up">
+          <h3 style="margin-bottom:10px">Resepsi</h3>
+          <p><i class="fa-regular fa-calendar"></i> Minggu, 25 Oktober 2026</p>
+          <p><i class="fa-regular fa-clock"></i> 11.00 - Selesai WIB</p>
+          <p class="meta">Gedung Sasana Hinggil Dwi Abad, Alun-Alun Kidul, Kota Yogyakarta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cerita" class="section section-dark">
+    <div class="wrap">
+      <h2 class="heading"><span class="webding">n</span> Perjalanan Cinta <span class="webding">n</span></h2>
+      <p class="lead">Kisah yang dimulai dari pertemuan sederhana hingga akhirnya berlabuh di pelaminan.</p>
+
+      <div class="timeline">
+        <div class="tl-item" data-aos="fade-right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3 style="color:var(--maroon);font-family:'Montserrat',sans-serif">Pertama Bertemu</h3>
+            <p class="meta">Kami bertemu di lingkungan kampus saat kegiatan sosial pada tahun 2020.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos="fade-left">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3 style="color:var(--maroon);font-family:'Montserrat',sans-serif">Menjalin Kasih</h3>
+            <p class="meta">Setelah menjadi sahabat, kami memutuskan untuk melangkah lebih serius pada 2022.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-aos="fade-right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3 style="color:var(--maroon);font-family:'Montserrat',sans-serif">Lamaran</h3>
+            <p class="meta">Dengan restu keluarga, kami melangkah ke tahap lamaran sebagai komitmen menuju pernikahan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section soft-brown">
+    <div class="wrap">
+      <h2 class="heading" style="color:#f6d87a"><span class="webding">n</span> RSVP <span class="webding">n</span></h2>
+      <p class="lead">Mohon konfirmasi kehadiran dan doa restu Anda.</p>
+
+      <div class="rsvp" data-aos="zoom-in">
+        <form id="rsvpForm">
+          <div class="field">
+            <label for="name">Nama</label>
+            <input id="name" type="text" placeholder="Tulis nama Anda" required>
+          </div>
+          <div class="field">
+            <label for="attendance">Kehadiran</label>
+            <select id="attendance" required>
+              <option value="">Pilih</option>
+              <option>Hadir</option>
+              <option>Tidak Hadir</option>
+              <option>Ragu-ragu</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="wish">Ucapan</label>
+            <textarea id="wish" rows="4" placeholder="Tulis doa dan ucapan..." required></textarea>
+          </div>
+          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Kirim</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p style="font-style:italic;margin-bottom:10px">Terima kasih atas kehadiran dan doa restu Anda.</p>
+    <h3 style="font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--gold)">Rama & Shinta</h3>
+    <div class="divider-space"></div>
+    <small>&copy; 2026 Undangan Pernikahan. All rights reserved.</small>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true, offset: 100 });
+
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+
+    musicBtn.addEventListener('click', async () => {
+      if (music.paused) {
+        try { await music.play(); musicIcon.className = 'fa-solid fa-pause'; } catch(e) {}
+      } else {
+        music.pause();
+        musicIcon.className = 'fa-solid fa-play';
+      }
+    });
+
+    const target = new Date('October 25, 2026 08:00:00').getTime();
+    const tick = () => {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      days.textContent = String(d).padStart(2,'0');
+      hours.textContent = String(h).padStart(2,'0');
+      minutes.textContent = String(m).padStart(2,'0');
+      seconds.textContent = String(s).padStart(2,'0');
+    };
+    tick();
+    setInterval(tick, 1000);
+
+    const rsvpForm = document.getElementById('rsvpForm');
+    rsvpForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Terima kasih. RSVP Anda telah diterima.');
+      rsvpForm.reset();
+    });
+  </script>
+</body>
+</html>
